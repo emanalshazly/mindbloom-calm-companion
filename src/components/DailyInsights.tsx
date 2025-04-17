@@ -16,7 +16,9 @@ const DailyInsights: React.FC = () => {
   
   // Select a random quote using today's date as seed
   const today = new Date();
-  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (24 * 60 * 60 * 1000));
+  const startOfYear = new Date(today.getFullYear(), 0, 0);
+  const diff = Number(today) - Number(startOfYear);
+  const dayOfYear = Math.floor(diff / (24 * 60 * 60 * 1000));
   const quoteIndex = dayOfYear % quotes.length;
 
   return (
